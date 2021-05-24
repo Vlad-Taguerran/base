@@ -1,0 +1,18 @@
+<?php
+namespace App;
+
+class Connection {
+    public static function getDb()
+    {
+        try {
+            $conn = new \PDO(
+                "mysql:host=localhost;dbname=NomeDoBancoDeDados;charset=utf8",
+                "UsuarioDoBancoDeDados",
+                "SenhaDoBancoDeDados");
+            $conn->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_EXCEPTION);
+            return $conn;
+        }catch( \PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+}
